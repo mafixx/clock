@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="clock_icon.ico">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+        *{
+            font-family: 'Nova Square';
+        }
+        html,
+        body{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #282828;
+        }
+        h1{
+            background: linear-gradient(180deg, #b527cf, #6355a4, #3bd9d9, #ffffff);
+	        background-size: 300%;
+            font-weight: 900;
+            font-size: 144px;
+            letter-spacing: 4px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animated_text 2s ease-in-out infinite;
+            -moz-animation: animated_text 2s ease-in-out infinite;
+            -webkit-animation: animated_text 2s ease-in-out infinite;
+            animation: pulse 5s linear infinite both;
+            filter: drop-shadow(0 0 0.25rem #fff);
+        }
+        @keyframes pulse{
+        0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        }
+        50% {
+        -webkit-transform: scale3d(1.05,1.05,1.05);
+        transform: scale3d(1.05,1.05,1.05);
+        }
+        100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        }
+    }
+    </style>
+    <h1 title="Clock by mafixx"></h1>
+</body>
+<script>
+    const currentTime = () => {
+        const el = document.querySelector("h1");
+
+        let date = new Date();
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+
+        hh = hh < 10 ? `0${hh}` : hh;
+        mm = mm < 10 ? `0${mm}` : mm;
+        ss = ss < 10 ? `0${ss}` : ss;
+        
+        let time = `${hh}:${mm}:${ss}`;
+        el.innerText = time;
+    }
+
+    currentTime();
+    setInterval(currentTime, 1000);
+</script>
+</html>
